@@ -4,8 +4,13 @@ import { ButtonIcon } from "@components/ButtonIcon";
 import { useTheme } from "styled-components";
 import { useState } from "react";
 
-export function AddTaskSection() {
+type crudActions = {
+  onAdd: () => void
+}
+
+export function AddTaskSection({ onAdd }: crudActions) {
   const [isFocused, setIsFocused] = useState(false)
+  const [task, setTask] = useState('')
 
   const { COLORS } = useTheme()
 
@@ -17,6 +22,8 @@ export function AddTaskSection() {
         isFocused={isFocused}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        value={task}
+        onChangeText={value => setTask(value)}
       />
 
       <ButtonIcon
