@@ -4,13 +4,14 @@ import theme from './src/theme'
 
 import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 
+import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';
 import { List } from '@components/List';
 
 
 export default function App() {
   
-  // const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold })
+  const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold })
 
   return (
     <ThemeProvider theme={theme}>
@@ -18,8 +19,16 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-        <Header />
-        <List />
+      {
+        fontsLoaded ? 
+        <>
+          <Header />
+          <List />
+        </>
+        :
+        <Loading />
+      }
+        
     </ThemeProvider>
   );
 }

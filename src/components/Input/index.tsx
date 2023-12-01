@@ -1,9 +1,14 @@
 import { TextInputProps } from "react-native";
 import { Container } from "./styles";
 
-export function Input({...rest}: TextInputProps) {
+type Props = TextInputProps & {
+  isFocused: boolean
+}
+
+export function Input({ isFocused, ...rest }: Props) {
   return (
     <Container
+      isFocused={isFocused}
       {...rest}
     />
   )

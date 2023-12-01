@@ -1,5 +1,9 @@
 import styled, { useTheme } from "styled-components/native";
 
+type InputProps = {
+  isFocused: boolean
+}
+
 export const Container = styled.TextInput`
   flex: 1;
   
@@ -7,7 +11,8 @@ export const Container = styled.TextInput`
   color: ${() => useTheme().COLORS.GRAY_100};
 
   padding: 16px;
+
   border-radius: 6px;
-  border: 1px solid ${() => useTheme().COLORS.GRAY_700};
+  border: 1px solid ${({ isFocused }: InputProps) => (isFocused ? useTheme().COLORS.PURPLE : useTheme().COLORS.GRAY_700)};
 
 `

@@ -1,17 +1,32 @@
 import { AddTaskSection } from "@components/AddTaskSection";
-import { Highlight } from "@components/Highlight";
+import { Container, HighlightSection } from "./styles";
 import { useTheme } from "styled-components/native";
-import { Container } from "./styles";
+import { Highlight } from "@components/Highlight";
+import { EmptyList } from "@components/EmptyList";
+import { FlatList } from "react-native";
+import { useState } from "react";
 
 export function List() {
+  const [tasks, setTasks] = useState([])
 
   const { COLORS } = useTheme()
+
+  
 
   return (
     <Container>
       <AddTaskSection />
 
-      <Highlight color={COLORS.PURPLE} title="Teste" number={7}/>
+      <HighlightSection>
+        <Highlight color={COLORS.BLUE} title="Criadas" number={7}/>
+        <Highlight color={COLORS.PURPLE} title="Concluídas" number={10}/>
+      </HighlightSection>
+
+      <FlatList 
+        ListEmptyComponent={() => (
+          <EmptyList />
+        )}
+      />
 
     </Container>
   )
