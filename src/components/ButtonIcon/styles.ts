@@ -5,8 +5,8 @@ export const Container = styled.TouchableOpacity`
   background-color: ${() => useTheme().COLORS.BLUE};
   border-radius: 6px;
   
-  height: 52px;
-  width: 52px;
+  height: 54px;
+  width: 54px;
 
   justify-content: center;
   align-items: center;

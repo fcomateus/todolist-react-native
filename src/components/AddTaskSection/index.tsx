@@ -5,7 +5,7 @@ import { useTheme } from "styled-components";
 import { useState } from "react";
 
 type crudActions = {
-  onAdd: () => void
+  onAdd: (task: string) => void
 }
 
 export function AddTaskSection({ onAdd }: crudActions) {
@@ -28,6 +28,7 @@ export function AddTaskSection({ onAdd }: crudActions) {
 
       <ButtonIcon
         icon="add-circle-outline"
+        onPress={() => onAdd(task)}
       />
     </Container>
   )
