@@ -1,4 +1,4 @@
-import { TouchableOpacityProps, OpaqueColorValue } from 'react-native';
+import { TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 import { Container, Icon } from "./styles";
 
