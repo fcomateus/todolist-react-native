@@ -36,7 +36,7 @@ export function List() {
       ])
     }
 
-    const taskData = {
+    const taskData: TaskType = {
       content: task,
       concluded: false
     }
@@ -45,11 +45,26 @@ export function List() {
     setTask('')
   }
 
-  function handleRemoveTask(task: TaskType) {
-    Alert.alert("Remover", `Remover tarefa: ${task.content}`, [
+  function handleChangeConclusionStatus(task: TaskType) {
+    console.log('task on handle function',task);
+
+    const updatedTasks = tasks.map(item => {
+      if(item.content === task.content) {
+        item.concluded = task.concluded
+      }
+      return item
+    })
+
+    console.log('updatedTasks',updatedTasks);
+
+    setTasks(updatedTasks)
+  }
+
+  function handleRemoveTask(taskContent: string) {
+    Alert.alert("Remover", `Remover tarefa: ${taskContent}`, [
       {
         text: 'Sim',
-        onPress: () => setTasks(prevState => prevState.filter(item => item.content !== task.content))
+        onPress: () => setTasks(prevState => prevState.filter(item => item.content !== taskContent))
       },
       {
         text: 'Não',
@@ -89,7 +104,8 @@ export function List() {
           <Task
             concluded={item.concluded}
             content={item.content}
-            onRemove={() => handleRemoveTask(item)}
+            onRemove={() => handleRemoveTask(item.content)}
+            onChangeConclusionStatus={() => handleChangeConclusionStatus(item)}
           />
         )}
         showsVerticalScrollIndicator={false}
