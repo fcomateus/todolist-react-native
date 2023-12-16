@@ -1,5 +1,4 @@
 import { Container, EmptyListImage, Title, Message } from "./styles";
-import { Text } from 'react-native'
 
 import clipboard from '@assets/EmptyList.png'
 

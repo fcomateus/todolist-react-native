@@ -5,9 +5,11 @@ export const Container = styled.View`
     align-items: center;
 
     padding-top: 48px;
+    margin-top: 20px;
 
-    border-top: 3px solid red;
-    border-bottom: 3px solid red;
+    border-top-width: 0.8px;
+    border-top-color: ${() => useTheme().COLORS.GRAY_300};
+
 `
 
 export const EmptyListImage = styled.Image`

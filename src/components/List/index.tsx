@@ -23,12 +23,13 @@ export function List() {
 
   const { COLORS } = useTheme()
 
-  function handleAddTask(task: string) {
-    const isTaskAlreadyInList = tasks.filter(item => item.content === task).length > 0
+  function handleAddTask(taskContent: string) {
+    taskContent = taskContent.trim()
+    const isTaskAlreadyInList = tasks.filter(item => item.content === taskContent).length > 0
 
     if(isTaskAlreadyInList) {
       setTask('')
-      return Alert.alert("Tarefa já inserida", `Tarefa ${task} já está na lista`, [
+      return Alert.alert("Tarefa já inserida", `Tarefa ${taskContent} já está na lista`, [
         {
           text: 'OK',
           style: 'cancel'
@@ -37,7 +38,7 @@ export function List() {
     }
 
     const taskData: TaskType = {
-      content: task,
+      content: taskContent,
       concluded: false
     }
 
@@ -45,12 +46,12 @@ export function List() {
     setTask('')
   }
 
-  function handleChangeConclusionStatus(task: TaskType) {
-    console.log('task on handle function',task);
+  function handleChangeConclusionStatus(taskToUpdate: TaskType) {
+    console.log('task on handle function',taskToUpdate);
 
     const updatedTasks = tasks.map(item => {
-      if(item.content === task.content) {
-        item.concluded = task.concluded
+      if(item.content === taskToUpdate.content) {
+        item.concluded = taskToUpdate.concluded
       }
       return item
     })
@@ -104,8 +105,8 @@ export function List() {
           <Task
             concluded={item.concluded}
             content={item.content}
-            onRemove={() => handleRemoveTask(item.content)}
-            onChangeConclusionStatus={() => handleChangeConclusionStatus(item)}
+            onRemove={handleRemoveTask}
+            onChangeConclusionStatus={handleChangeConclusionStatus}
           />
         )}
         showsVerticalScrollIndicator={false}
