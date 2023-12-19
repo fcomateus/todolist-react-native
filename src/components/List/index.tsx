@@ -47,16 +47,12 @@ export function List() {
   }
 
   function handleChangeConclusionStatus(taskToUpdate: TaskType) {
-    console.log('task on handle function',taskToUpdate);
-
     const updatedTasks = tasks.map(item => {
       if(item.content === taskToUpdate.content) {
         item.concluded = taskToUpdate.concluded
       }
       return item
     })
-
-    console.log('updatedTasks',updatedTasks);
 
     setTasks(updatedTasks)
   }

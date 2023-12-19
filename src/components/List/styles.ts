@@ -10,6 +10,7 @@ export const Container = styled.View`
 export const HighlightSection = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
 `
 
 export const AddTaskSection = styled.View`

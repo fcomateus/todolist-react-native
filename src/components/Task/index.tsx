@@ -25,14 +25,11 @@ export function Task({ concluded, content, onRemove, onChangeConclusionStatus }:
                 }}
                 fillColor={COLORS.PURPLE}
                 onPress={(isChecked) => {
-                    console.log(isChecked);
                     const taskData : TaskType = {
                         concluded: isChecked,
                         content
                     }
 
-                    console.log('taskData', taskData);
-                    
                     onChangeConclusionStatus(taskData)
                     
                 }}
